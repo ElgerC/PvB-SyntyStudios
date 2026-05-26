@@ -6,7 +6,7 @@ namespace packShowcase.actions.controller
 {
     public abstract class BaseActionController : MonoBehaviour
     {
-        private bool isActing;
+        private bool isActing = true;
         private BaseAction currentAction;
         [SerializeField] private GameObject actionHolder;
         [SerializeField] private Side side;
@@ -18,7 +18,7 @@ namespace packShowcase.actions.controller
             Initialize();
         }
 
-        public void Initialize()
+        protected virtual void Initialize()
         {
             movementController.Initialize(side);
         }
