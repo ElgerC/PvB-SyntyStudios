@@ -8,7 +8,7 @@ namespace packShowcase.actions
     public abstract class BaseAction : MonoBehaviour
     {
         //change origin to the actionController when that is made
-        private BaseActionController origin;
+        protected BaseActionController origin;
         protected UniTask action;
         [SerializeField] protected BaseActionStatModel statModel;
 
