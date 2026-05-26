@@ -26,12 +26,11 @@ namespace packShowcase.targetContainer
             return target;
         }
 
-        public int GetLocationOfSide(Side side)
+        public TargetContainer[] GetTargetContainers(Side originSide)
         {
             var sideContainers = playerTargetContainers;
-            var containerIndex = 0;
 
-            switch (side)
+            switch (originSide)
             {
                 case Side.player:
                     sideContainers = playerTargetContainers;
@@ -41,15 +40,7 @@ namespace packShowcase.targetContainer
                     break;
             }
 
-            for (int i = 0; i < sideContainers.Length; i++)
-            {
-                if(sideContainers[i].target != null)
-                {
-                    containerIndex = i;
-                }
-            }
-
-            return containerIndex;
+            return sideContainers;
         }
     } 
 }

@@ -5,12 +5,15 @@ namespace packShowcase.targetContainer
     public class TargetContainer : MonoBehaviour
     {
         public GameObject target{get; private set;}
-        private void Initialize(GameObject startingObject)
+
+        public void AssignTarget(GameObject newTarget)
         {
-            if(startingObject != null)
-            {
-                target = startingObject;
-            }
+            target = newTarget;
+        }
+
+        public void UnAssignTarget()
+        {
+            target = null;
         }
     }
 }
