@@ -7,10 +7,10 @@ namespace packShowcase.actions.controller
     public abstract class BaseActionController : MonoBehaviour
     {
         private bool isActing = true;
-        private BaseAction currentAction;
         [SerializeField] private GameObject actionHolder;
         [SerializeField] private Side side;
         [SerializeField] private TargetMovementController movementController;
+        protected BaseAction currentAction;
         public TargetMovementController MovementController => movementController;
 
         void Awake()
@@ -33,7 +33,9 @@ namespace packShowcase.actions.controller
             var actionObject = Instantiate(actionTemplate,actionHolder.transform.position,Quaternion.identity);
             var action = actionObject.GetComponent<BaseAction>();
 
+            currentAction = action;
             await action.PerformAsync(actionOrigin: this);
+            currentAction = null;
         }
     }
 }

@@ -38,6 +38,8 @@ public class TargetMovementController : MonoBehaviour
 
         currentContainer.UnAssignTarget();
         newContainer.AssignTarget(gameObject);
+
+        transform.position = newContainer.gameObject.transform.position;
     }
 
     private bool CheckLocation(int checkIndex)
