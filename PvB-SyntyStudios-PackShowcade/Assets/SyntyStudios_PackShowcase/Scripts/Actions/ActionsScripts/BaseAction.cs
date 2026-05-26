@@ -15,6 +15,8 @@ namespace packShowcase.actions
         public async UniTask PerformAsync(BaseActionController actionOrigin)
         {
             origin = actionOrigin;
+            await ActionTask();
+            Destroy(gameObject);
         } 
 
         protected virtual UniTask ActionTask()
