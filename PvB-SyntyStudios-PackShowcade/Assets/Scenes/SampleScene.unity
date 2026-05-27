@@ -654,10 +654,7 @@ MonoBehaviour:
   side: 1
   movementController: {fileID: 585923998}
   actionChanceMatches:
-  - actionObject: {fileID: 5901104895198507418, guid: 6fc8f402a8a05ee41a5a81c9edaa8229, type: 3}
-    baseChance: 25
-    maxNum: 0
-  - actionObject: {fileID: 5901104895198507418, guid: 00f85aa67d470df48857920240087afb, type: 3}
+  - actionObject: {fileID: 5901104895198507418, guid: 7ce3901f3cb1ad74992485ea87989ea8, type: 3}
     baseChance: 25
     maxNum: 0
 --- !u!114 &585923998
