@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class WaveController : MonoBehaviour
@@ -24,6 +25,7 @@ public class WaveController : MonoBehaviour
         {
             OnFinalWaveReached.Invoke();
             Debug.Log("final wave reached");
+            SceneManager.LoadScene("EndScreen");
             return;
         } 
 
