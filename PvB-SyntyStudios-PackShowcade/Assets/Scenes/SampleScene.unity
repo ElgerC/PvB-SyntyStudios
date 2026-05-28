@@ -585,6 +585,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7dec5337-7f8c-4b0c-9f3e-cbc8ac085b0d
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d55fddf8-c867-4e38-ad23-d6c30f79ff80
+    m_ActionName: 'Player/Attack[/Keyboard/w]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -602,6 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c48f05d11b212f458254147c3bc34c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetMovementController
+  baseActionController: {fileID: 422687977}
 --- !u!114 &422687972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,6 +627,8 @@ MonoBehaviour:
     inputAction: {fileID: 4472549870813194204, guid: e471552009915174eaef1c2ca48515ad, type: 3}
   - actionObject: {fileID: 5901104895198507418, guid: 00f85aa67d470df48857920240087afb, type: 3}
     inputAction: {fileID: 2036330738905223854, guid: e471552009915174eaef1c2ca48515ad, type: 3}
+  - actionObject: {fileID: 5901104895198507418, guid: d726e1338cf59684c947ab1124af76cd, type: 3}
+    inputAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!23 &422687973
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -790,6 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c48f05d11b212f458254147c3bc34c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetMovementController
+  baseActionController: {fileID: 585924002}
 --- !u!23 &585923999
 MeshRenderer:
   m_ObjectHideFlags: 0
