@@ -39,4 +39,10 @@ public class TargetInstabilityController : MonoBehaviour
         onInstability100.Invoke();
         instability = 0;
     }
+
+    public void IncreaseInstability(float amount)
+    {
+        var newInstability = Mathf.Clamp( instability + amount,0,100);
+        instability = newInstability;
+    }
 }

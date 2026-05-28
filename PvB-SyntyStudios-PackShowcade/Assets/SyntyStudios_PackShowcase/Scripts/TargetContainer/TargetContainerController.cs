@@ -1,3 +1,4 @@
+using packShowcase.actions.controller;
 using packShowcase.side;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace packShowcase.targetContainer
         [SerializeField] private TargetContainer[] enemyTargetContainers;
 
         //change GameObject to dmg system later
-        public GameObject GetTargetAtLocation(int locationIndex, Side targetSide)
+        public TargetInstabilityController GetTargetAtLocation(int locationIndex, Side targetSide)
         {
             var target = playerTargetContainers[0].target;
 

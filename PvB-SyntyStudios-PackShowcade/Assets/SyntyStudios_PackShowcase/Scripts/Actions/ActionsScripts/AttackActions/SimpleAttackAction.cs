@@ -1,0 +1,59 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using packShowcase.actions;
+using packShowcase.side;
+using packShowcase.targetContainer;
+using UnityEngine;
+using Zenject;
+
+public class SimpleAttackAction : BaseAction
+{
+    [SerializeField] private SimpleAttackActionStatModel attackStatModel;
+    [SerializeField] private MeshRenderer attackOutlineSpriteRenderer;
+    [Inject] private TargetContainerController targetContainerController;
+    private TargetContainer targetContainer;
+    private Vector3 startPosition;
+    protected override UniTask ActionTask()
+    {
+        Initialize();
+        return AttackAnimationSequence().AsyncWaitForCompletion().AsUniTask();
+    }
+
+    private Sequence AttackAnimationSequence()
+    {
+        var target = targetContainer.transform.position;
+
+        var sequence = DOTween.Sequence(this)
+        .Append(attackOutlineSpriteRenderer.material.DOFade(1,attackStatModel.DelayUntilDamage))
+        .Append(origin.modelHolder.transform.DOMove(target,attackStatModel.AttackDuration))
+        .AppendCallback(DealDamage)
+        .Append(origin.modelHolder.transform.DOLocalMove(Vector3.zero,attackStatModel.RetreatDuration));
+
+        return sequence;
+    }
+
+    private void DealDamage()
+    {
+        targetContainer.target?.IncreaseInstability(attackStatModel.Damage);
+    }
+
+    private void Initialize()
+    {
+        startPosition = origin.transform.position;
+
+        var targetContainerIndex = origin.MovementController.containerIndex;
+        targetContainer = targetContainerController.GetTargetContainers(OppositeSide())[targetContainerIndex];
+    }
+
+    private Side OppositeSide()
+    {
+        if(origin.Side == Side.player)
+        {
+            return Side.enemy;
+        }
+        else
+        {
+            return Side.player;
+        }
+    }
+}

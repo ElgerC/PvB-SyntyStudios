@@ -1,14 +1,18 @@
 using Cysharp.Threading.Tasks;
 using packShowcase.side;
 using UnityEngine;
+using Zenject;
 
 namespace packShowcase.actions.controller
 {
     public abstract class BaseActionController : MonoBehaviour
     {
         private bool isActing = true;
+        [Inject] private DiContainer diContainer;
         [SerializeField] private GameObject actionHolder;
+        public GameObject modelHolder;
         [SerializeField] private Side side;
+        public Side Side => side;
         [SerializeField] private TargetMovementController movementController;
         protected BaseAction currentAction;
         public TargetMovementController MovementController => movementController;
@@ -30,7 +34,7 @@ namespace packShowcase.actions.controller
                 return;
             }
 
-            var actionObject = Instantiate(actionTemplate,actionHolder.transform.position,Quaternion.identity);
+            var actionObject = diContainer.InstantiatePrefab(actionTemplate,actionHolder.transform.position,Quaternion.identity,actionHolder.transform);
             var action = actionObject.GetComponent<BaseAction>();
 
             currentAction = action;

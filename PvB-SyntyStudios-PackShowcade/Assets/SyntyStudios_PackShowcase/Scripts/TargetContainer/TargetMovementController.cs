@@ -1,3 +1,4 @@
+using packShowcase.actions.controller;
 using packShowcase.side;
 using packShowcase.targetContainer;
 using UnityEngine;
@@ -6,7 +7,8 @@ using Zenject;
 public class TargetMovementController : MonoBehaviour
 {
     private TargetContainer[] containers;
-    private int containerIndex;
+    [SerializeField] private TargetInstabilityController baseActionController;
+    public int containerIndex{get; private set;}
     [Inject] TargetContainerController targetContainerController;
     public void Initialize(Side originSide)
     {
@@ -37,7 +39,7 @@ public class TargetMovementController : MonoBehaviour
         var newContainer = containers[newContainerIndex];
 
         currentContainer.UnAssignTarget();
-        newContainer.AssignTarget(gameObject);
+        newContainer.AssignTarget(baseActionController);
 
         transform.position = newContainer.gameObject.transform.position;
     }
