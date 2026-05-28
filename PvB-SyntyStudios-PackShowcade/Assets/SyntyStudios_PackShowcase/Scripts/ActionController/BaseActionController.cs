@@ -34,7 +34,8 @@ namespace packShowcase.actions.controller
                 return;
             }
 
-            var actionObject = diContainer.InstantiatePrefab(actionTemplate,actionHolder.transform.position,Quaternion.identity,actionHolder.transform);
+            var direction = actionHolder.transform.rotation;
+            var actionObject = diContainer.InstantiatePrefab(actionTemplate,actionHolder.transform.position,direction,actionHolder.transform);
             var action = actionObject.GetComponent<BaseAction>();
 
             currentAction = action;
