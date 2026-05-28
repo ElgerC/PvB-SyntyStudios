@@ -931,9 +931,10 @@ MonoBehaviour:
   - actionObject: {fileID: 5901104895198507418, guid: 7ce3901f3cb1ad74992485ea87989ea8, type: 3}
     baseChance: 25
     maxNum: 0
-  - actionObject: {fileID: 5901104895198507418, guid: d726e1338cf59684c947ab1124af76cd, type: 3}
+  - actionObject: {fileID: 5901104895198507418, guid: a2410818c433eb34a8d8c82225f5d478, type: 3}
     baseChance: 25
     maxNum: 0
+  enemyActionCooldown: 2
 --- !u!114 &585923998
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class EnemyActionController : BaseActionController
     }
 
     [SerializeField] private ActionChanceMatch[] actionChanceMatches;
+    [SerializeField] private float enemyActionCooldown;
+    private bool coolingDown = false;
 
     protected override void Initialize()
     {
@@ -50,10 +52,13 @@ public class EnemyActionController : BaseActionController
 
     private async UniTask TryPlayAction()
     {
-        if(currentAction == null)
+        if(currentAction == null && coolingDown == false)
         {
+            coolingDown = true;
             var action = GetRandomAction();
             await PlayAction(action.actionObject);
+            await UniTask.Delay((int)(enemyActionCooldown*1000));
+            coolingDown = false;
         }
     }
 
