@@ -9,9 +9,9 @@ using Zenject;
 public class SimpleAttackAction : BaseAction
 {
     [SerializeField] private SimpleAttackActionStatModel attackStatModel;
-    [SerializeField] private MeshRenderer attackOutlineSpriteRenderer;
+    [SerializeField] protected MeshRenderer attackOutlineSpriteRenderer;
     [Inject] private TargetContainerController targetContainerController;
-    private TargetContainer targetContainer;
+    protected TargetContainer targetContainer;
     private Vector3 startPosition;
     protected override UniTask ActionTask()
     {
@@ -19,7 +19,7 @@ public class SimpleAttackAction : BaseAction
         return AttackAnimationSequence().AsyncWaitForCompletion().AsUniTask();
     }
 
-    protected Sequence AttackAnimationSequence()
+    protected virtual Sequence AttackAnimationSequence()
     {
         var target = targetContainer.transform.position;
 

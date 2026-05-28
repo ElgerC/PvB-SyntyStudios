@@ -16,6 +16,8 @@ namespace packShowcase.actions.controller
         [SerializeField] private TargetMovementController movementController;
         protected BaseAction currentAction;
         public TargetMovementController MovementController => movementController;
+        [SerializeField] private TargetInstabilityController targetInstabilityController;
+        public TargetInstabilityController TargetInstabilityController => targetInstabilityController;
 
         void Awake()
         {

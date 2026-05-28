@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 public class InterruptableAttackAction : SimpleAttackAction
 {
-    private Sequence attackSequence;
+    protected Sequence attackSequence;
     protected override async UniTask ActionTask()
     {
         Initialize();
@@ -17,7 +17,7 @@ public class InterruptableAttackAction : SimpleAttackAction
         await task;
     }
 
-    public void Interrupt()
+    public virtual void Interrupt()
     {
         attackSequence.Kill();
     }
