@@ -30,7 +30,7 @@ public class BlockableAttackAction : InterruptableAttackAction
     {
         var sequence = DOTween.Sequence(this).Append(DOVirtual.Float(maxSize,minSize,duration,(tweenNum)=>
         {
-            LineRendererCircleExtension.MakeRing(lineRenderer,tweenNum,20);
+            LineRendererCircleExtension.MakeRing(new Vector3(-44.25f,0.672467947f,5.61567688f),lineRenderer,tweenNum,20);
         }));
 
         return sequence;
