@@ -49,4 +49,4 @@ MonoBehaviour:
   attackOutlineSpriteRenderer: {fileID: 0}
   channelBarTemplate: {fileID: 4484014032677787577, guid: 865b06ba869b6d646b399662d27f73ba, type: 3}
   channelAttackStatModel: {fileID: 11400000, guid: 5dc6e469ae0d1554e816ce499964c9a2, type: 2}
-  offSet: {x: 0, y: 10, z: 0}
+  offSet: {x: 0, y: 100, z: 0}
