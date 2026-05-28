@@ -7,10 +7,12 @@ public class TargetInstabilityController : MonoBehaviour
     [SerializeField] private UnityEvent onInstability100;
     [SerializeField] private TargetInstabilityView view;
     private float instability = 0;
+    private bool initialized = false;
 
-    void Awake()
+    public void Initialize()
     {
         view.Initialize(100);    
+        initialized = true;
     }
 
     private void ReduceInstability()
@@ -23,10 +25,13 @@ public class TargetInstabilityController : MonoBehaviour
 
     private void Update()
     {
-        ReduceInstability();
-        view.UpdateSlider(instability);
-        view.UpdateTrackingPosition(transform.position);
-        TryLaunchOn100Event();
+        if(initialized)
+        {
+            ReduceInstability();
+            view.UpdateSlider(instability);
+            view.UpdateTrackingPosition(transform.position);
+            TryLaunchOn100Event();
+        }
     }
 
     private void TryLaunchOn100Event()
@@ -44,5 +49,10 @@ public class TargetInstabilityController : MonoBehaviour
     {
         var newInstability = Mathf.Clamp( instability + amount,0,100);
         instability = newInstability;
+    }
+
+    public void SetInstabilityView(TargetInstabilityView targetView)
+    {
+        view = targetView;
     }
 }

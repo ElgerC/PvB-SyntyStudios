@@ -19,14 +19,10 @@ namespace packShowcase.actions.controller
         [SerializeField] private TargetInstabilityController targetInstabilityController;
         public TargetInstabilityController TargetInstabilityController => targetInstabilityController;
 
-        void Awake()
-        {
-            Initialize();
-        }
-
-        protected virtual void Initialize()
+        public virtual void Initialize()
         {
             movementController.Initialize(side);
+            targetInstabilityController.Initialize();
         }
 
         protected virtual async UniTask PlayAction(GameObject actionTemplate)

@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using packShowcase.actions.controller;
 using packShowcase.actions.model;
@@ -11,17 +12,31 @@ namespace packShowcase.actions
         protected BaseActionController origin;
         protected UniTask action;
         [SerializeField] protected BaseActionStatModel statModel;
+        private CancellationTokenSource actionCancellationTokenSource = new CancellationTokenSource();
 
         public async UniTask PerformAsync(BaseActionController actionOrigin)
         {
             origin = actionOrigin;
-            await ActionTask();
-            Destroy(gameObject);
+
+            var cancellationToken = actionCancellationTokenSource.Token;
+            var task = ActionTask().AttachExternalCancellation(cancellationToken);
+
+            await task;
+            if(task.Status == UniTaskStatus.Succeeded)
+            {
+                Destroy(gameObject);
+            }
         } 
 
         protected virtual UniTask ActionTask()
         {
             return UniTask.CompletedTask;
+        }
+
+        public void Stop()
+        {
+            actionCancellationTokenSource.Cancel();
+            Destroy(gameObject);
         }
     }
 }

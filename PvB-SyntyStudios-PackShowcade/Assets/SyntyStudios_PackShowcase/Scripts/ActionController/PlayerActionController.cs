@@ -13,6 +13,11 @@ public class PlayerActionController : BaseActionController
         public InputActionReference inputAction;
     }
 
+    private void Awake()
+    {
+        Initialize();
+    }
+
     private void SubscribeActionToInput(GameObject action, InputAction input)
     {
         var observable = input.AsButtonObservable();
@@ -20,7 +25,7 @@ public class PlayerActionController : BaseActionController
     }
 
     [SerializeField] private ActionInputMatch[] actionInputMatches;
-    protected override void Initialize()
+    public override void Initialize()
     {
         foreach(var match in actionInputMatches)
         {

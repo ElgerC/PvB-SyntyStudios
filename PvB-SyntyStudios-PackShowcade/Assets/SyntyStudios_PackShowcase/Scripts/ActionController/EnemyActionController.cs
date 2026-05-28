@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using packShowcase.actions.controller;
 using UnityEngine;
+using Zenject;
 
 public class EnemyActionController : BaseActionController
 {
@@ -16,9 +17,10 @@ public class EnemyActionController : BaseActionController
 
     [SerializeField] private ActionChanceMatch[] actionChanceMatches;
     [SerializeField] private float enemyActionCooldown;
+    [Inject] private WaveController waveController;
     private bool coolingDown = false;
 
-    protected override void Initialize()
+    public override void Initialize()
     {
         base.Initialize();
         CalculateMaxNumbers();
@@ -67,4 +69,10 @@ public class EnemyActionController : BaseActionController
         TryPlayAction().Forget();
     }
 
+    public void KillEnemy()
+    {
+        waveController.SpawnWaveAndIncrementIndex();
+        currentAction?.Stop();
+        Destroy(gameObject);
+    }
 }
