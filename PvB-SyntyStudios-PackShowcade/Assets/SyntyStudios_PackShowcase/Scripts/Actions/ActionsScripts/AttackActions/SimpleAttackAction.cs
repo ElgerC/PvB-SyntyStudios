@@ -19,7 +19,7 @@ public class SimpleAttackAction : BaseAction
         return AttackAnimationSequence().AsyncWaitForCompletion().AsUniTask();
     }
 
-    private Sequence AttackAnimationSequence()
+    protected Sequence AttackAnimationSequence()
     {
         var target = targetContainer.transform.position;
 
@@ -32,12 +32,12 @@ public class SimpleAttackAction : BaseAction
         return sequence;
     }
 
-    private void DealDamage()
+    protected void DealDamage()
     {
         targetContainer.target?.IncreaseInstability(attackStatModel.Damage);
     }
 
-    private void Initialize()
+    protected void Initialize()
     {
         startPosition = origin.transform.position;
 
@@ -45,7 +45,7 @@ public class SimpleAttackAction : BaseAction
         targetContainer = targetContainerController.GetTargetContainers(OppositeSide())[targetContainerIndex];
     }
 
-    private Side OppositeSide()
+    protected Side OppositeSide()
     {
         if(origin.Side == Side.player)
         {
