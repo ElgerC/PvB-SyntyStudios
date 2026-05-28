@@ -33,7 +33,7 @@ namespace packShowcase.actions
             return UniTask.CompletedTask;
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             actionCancellationTokenSource.Cancel();
             Destroy(gameObject);
