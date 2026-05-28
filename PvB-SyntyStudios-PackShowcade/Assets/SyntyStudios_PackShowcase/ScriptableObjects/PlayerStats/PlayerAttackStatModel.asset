@@ -15,5 +15,5 @@ MonoBehaviour:
   actionDuration: 0
   delayUntilDamage: 0
   damage: 10
-  attackDuration: 0.3
-  retreatDuration: 0.4
+  attackDuration: 0.2
+  retreatDuration: 0.3

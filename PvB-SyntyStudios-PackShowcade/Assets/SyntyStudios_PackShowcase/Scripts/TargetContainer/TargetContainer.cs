@@ -5,9 +5,9 @@ namespace packShowcase.targetContainer
 {
     public class TargetContainer : MonoBehaviour
     {
-        public TargetInstabilityController target{get; private set;}
+        public BaseActionController target{get; private set;}
 
-        public void AssignTarget(TargetInstabilityController newTarget)
+        public void AssignTarget(BaseActionController newTarget)
         {
             target = newTarget;
         }

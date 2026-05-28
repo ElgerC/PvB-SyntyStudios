@@ -10,7 +10,7 @@ namespace packShowcase.targetContainer
         [SerializeField] private TargetContainer[] enemyTargetContainers;
 
         //change GameObject to dmg system later
-        public TargetInstabilityController GetTargetAtLocation(int locationIndex, Side targetSide)
+        public BaseActionController GetTargetAtLocation(int locationIndex, Side targetSide)
         {
             var target = playerTargetContainers[0].target;
 

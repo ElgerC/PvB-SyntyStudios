@@ -44,5 +44,16 @@ namespace packShowcase.actions.controller
             await action.PerformAsync(actionOrigin: this);
             currentAction = null;
         }
+
+        public void TryInterruptAction()
+        {
+            InterruptableAttackAction interruptableAttackAction = null;
+            currentAction.TryGetComponent<InterruptableAttackAction>(out interruptableAttackAction);
+
+            if(interruptableAttackAction != null)
+            {
+                interruptableAttackAction.Interrupt();
+            }
+        }
     }
 }

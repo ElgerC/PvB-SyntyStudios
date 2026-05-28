@@ -7,7 +7,7 @@ using Zenject;
 public class TargetMovementController : MonoBehaviour
 {
     private TargetContainer[] containers;
-    [SerializeField] private TargetInstabilityController baseActionController;
+    [SerializeField] private BaseActionController baseActionController;
     public int containerIndex{get; private set;}
     [Inject] TargetContainerController targetContainerController;
     public void Initialize(Side originSide)

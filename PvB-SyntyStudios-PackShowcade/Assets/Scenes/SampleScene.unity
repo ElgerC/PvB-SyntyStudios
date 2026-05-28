@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c48f05d11b212f458254147c3bc34c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetMovementController
-  baseActionController: {fileID: 422687977}
+  baseActionController: {fileID: 422687972}
 --- !u!114 &422687972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +621,7 @@ MonoBehaviour:
   modelHolder: {fileID: 550507207}
   side: 0
   movementController: {fileID: 422687971}
+  targetInstabilityController: {fileID: 422687977}
   actionInputMatches:
   - actionObject: {fileID: 5901104895198507418, guid: 6fc8f402a8a05ee41a5a81c9edaa8229, type: 3}
     inputAction: {fileID: 4472549870813194204, guid: e471552009915174eaef1c2ca48515ad, type: 3}
@@ -927,6 +928,7 @@ MonoBehaviour:
   modelHolder: {fileID: 585524093}
   side: 1
   movementController: {fileID: 585923998}
+  targetInstabilityController: {fileID: 585924002}
   actionChanceMatches:
   - actionObject: {fileID: 5901104895198507418, guid: 2947b84f6e820d541872f69d5a29bf78, type: 3}
     baseChance: 25
@@ -944,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c48f05d11b212f458254147c3bc34c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetMovementController
-  baseActionController: {fileID: 585924002}
+  baseActionController: {fileID: 585923997}
 --- !u!4 &585924001
 Transform:
   m_ObjectHideFlags: 0
