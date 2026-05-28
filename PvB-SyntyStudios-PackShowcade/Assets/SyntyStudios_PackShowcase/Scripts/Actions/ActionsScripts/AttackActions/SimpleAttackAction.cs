@@ -35,7 +35,7 @@ public class SimpleAttackAction : BaseAction
     protected void DealDamage()
     {
         targetContainer.target?.TargetInstabilityController.IncreaseInstability(attackStatModel.Damage);
-        targetContainer.target?.TryInterruptAction();
+        targetContainer?.target?.TryInterruptAction();
     }
 
     protected void Initialize()
