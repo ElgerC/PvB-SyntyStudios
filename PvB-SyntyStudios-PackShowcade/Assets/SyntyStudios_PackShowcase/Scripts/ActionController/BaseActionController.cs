@@ -41,15 +41,17 @@ namespace packShowcase.actions.controller
             currentAction = null;
         }
 
-        public void TryInterruptAction()
+        public bool TryInterruptAction()
         {
             InterruptableAttackAction interruptableAttackAction = null;
-            currentAction.TryGetComponent<InterruptableAttackAction>(out interruptableAttackAction);
+            currentAction?.TryGetComponent<InterruptableAttackAction>(out interruptableAttackAction);
 
             if(interruptableAttackAction != null)
             {
                 interruptableAttackAction.Interrupt();
+                return true;
             }
+            return false;
         }
     }
 }

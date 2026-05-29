@@ -13,10 +13,13 @@ public class SimpleAttackAction : BaseAction
     [Inject] private TargetContainerController targetContainerController;
     protected TargetContainer targetContainer;
     private Vector3 startPosition;
+    private bool triedInteruption = false;
+    private Sequence attackSequence;
     protected override UniTask ActionTask()
     {
         Initialize();
-        return AttackAnimationSequence().AsyncWaitForCompletion().AsUniTask();
+        attackSequence = AttackAnimationSequence();
+        return attackSequence.AsyncWaitForCompletion().AsUniTask();
     }
 
     protected virtual Sequence AttackAnimationSequence()
@@ -35,7 +38,31 @@ public class SimpleAttackAction : BaseAction
     protected void DealDamage()
     {
         targetContainer.target?.TargetInstabilityController.IncreaseInstability(attackStatModel.Damage);
-        targetContainer?.target?.TryInterruptAction();
+        
+    }
+
+    private void Update()
+    {
+        if(!targetContainer.target)
+        {
+            return;
+        }
+
+        var originPos = origin.modelHolder.transform.position;
+        var targetPos = targetContainer.target.modelHolder.transform.position;
+            
+        
+        var dist = Vector3.Distance(originPos,targetPos);
+
+        if(dist < 1 && !triedInteruption)
+        {
+            if (targetContainer.target.TryInterruptAction())
+            {
+                attackSequence.Kill();
+                triedInteruption = true;
+                BlockAttack();
+            }
+        }
     }
 
     protected void Initialize()
@@ -56,5 +83,10 @@ public class SimpleAttackAction : BaseAction
         {
             return Side.player;
         }
+    }
+
+    private void BlockAttack()
+    {
+        origin.modelHolder.transform.DOMove(startPosition,0.1f);
     }
 }
