@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleAttackActionStatModel
   actionDuration: 0
   delayUntilDamage: 0
-  damage: 10
+  damage: 5
   attackDuration: 0.2
   retreatDuration: 0.3

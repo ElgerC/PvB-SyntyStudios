@@ -8295,7 +8295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09859552ec8e1594caf5e429e233f22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetInstabilityController
-  reductionPerSecond: 3
+  reductionPerSecond: 0.1
   onInstability100:
     m_PersistentCalls:
       m_Calls:

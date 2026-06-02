@@ -27,10 +27,10 @@ public class TargetInstabilityController : MonoBehaviour
     {
         if(initialized)
         {
+            TryLaunchOn100Event();
             ReduceInstability();
             view.UpdateSlider(instability);
             view.UpdateTrackingPosition(transform.position);
-            TryLaunchOn100Event();
         }
     }
 
