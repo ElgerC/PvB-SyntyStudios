@@ -143,6 +143,7 @@ MonoBehaviour:
     baseChance: 25
     maxNum: 0
   enemyActionCooldown: 0
+  quest: {fileID: 11400000, guid: 6645a3b389728a841abf266cff08ae94, type: 2}
 --- !u!114 &1005187871658652476
 MonoBehaviour:
   m_ObjectHideFlags: 0

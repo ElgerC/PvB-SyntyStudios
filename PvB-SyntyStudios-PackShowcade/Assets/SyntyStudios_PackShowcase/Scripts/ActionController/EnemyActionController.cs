@@ -17,7 +17,9 @@ public class EnemyActionController : BaseActionController
 
     [SerializeField] private ActionChanceMatch[] actionChanceMatches;
     [SerializeField] private float enemyActionCooldown;
+    [SerializeField] private QuestModel quest;
     [Inject] private WaveController waveController;
+    [Inject] private QuestController questController;
     private bool coolingDown = false;
 
     public override void Initialize()
@@ -73,6 +75,17 @@ public class EnemyActionController : BaseActionController
     {
         waveController.SpawnWaveAndIncrementIndex();
         currentAction?.Stop();
+        TryFinishQuest();
         Destroy(gameObject);
+    }
+
+    private void TryFinishQuest()
+    {
+        if(quest == null)
+        {
+            return;
+        }
+
+        questController.SetNextQuestActive(quest.id);
     }
 }
