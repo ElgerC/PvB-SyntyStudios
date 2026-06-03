@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class WaveController : MonoBehaviour
     public UnityEvent OnFinalWaveReached;
     [SerializeField] private EnemyWave[] enemyWaves;
     [Inject] private EnemyFactory enemyFactory;
+    [Inject] private GameManager gameManager;
     private int waveIndex = 0;
     private int enemyIndex = 0;
 
@@ -25,7 +27,7 @@ public class WaveController : MonoBehaviour
         {
             OnFinalWaveReached.Invoke();
             Debug.Log("final wave reached");
-            SceneManager.LoadScene("EndScreen");
+            gameManager.CloseGame().Forget();
             return;
         } 
 

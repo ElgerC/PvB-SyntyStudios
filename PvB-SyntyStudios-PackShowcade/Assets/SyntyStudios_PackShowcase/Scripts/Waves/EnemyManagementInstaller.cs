@@ -7,5 +7,6 @@ public class EnemyManagementInstaller : MonoInstaller
     {
         Container.Bind<WaveController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<EnemyFactory>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
     }
 }
